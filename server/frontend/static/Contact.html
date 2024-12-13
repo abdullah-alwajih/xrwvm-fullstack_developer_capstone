@@ -1,0 +1,110 @@
+<html>
+<head>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <style>
+    .contact-header {
+      background-color: darkturquoise;
+      padding: 20px;
+      text-align: center;
+      color: white;
+      font-size: 2em;
+    }
+
+    .contact-card {
+      width: 60%;
+      margin: auto;
+      margin-top: 5%;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-header {
+      background-color: darkturquoise;
+      color: white;
+      font-size: 1.5em;
+      text-align: center;
+      padding: 10px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    .card-body {
+      padding: 20px;
+      font-size: larger;
+      line-height: 1.8;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+
+    .contact-item {
+      text-align: center;
+    }
+
+    .contact-item i {
+      font-size: 2em;
+      color: darkturquoise;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
+      <div class="container-fluid">
+        <h2 style="padding-right: 5%;">Dealerships</h2>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" style="font-size: larger;" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="font-size: larger;" href="/about">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" style="font-size: larger;" href="/contact">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+    <div class="contact-card">
+      <div class="card-header">
+        Get in Touch with Us
+      </div>
+      <div class="card-body">
+        <p>If you have any questions, feedback, or just want to reach out, feel free to contact us using the information below.</p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <p>Phone</p>
+            <p>+966500608507</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <p>Email</p>
+            <p>pro.abdullah.alwajih@gmail.com</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <p>Address</p>
+            <p>Riyadh, Saudi Arabia</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
