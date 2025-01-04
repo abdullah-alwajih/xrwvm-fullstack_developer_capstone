@@ -25,9 +25,12 @@ def get_request(endpoint, **kwargs):
         # Call get method of requests library with URL and parameters
         response = requests.get(request_url)
         return response.json()
-    except:
-        # If any error occurs
-        print("Network exception occurred")
+    except requests.RequestException as req_err:
+        # Catch specific request exceptions
+        print(f"Request exception occurred: {req_err}")
+    except Exception as err:
+        # Catch other general exceptions
+        print(f"Unexpected error: {err}")
 
 
 def analyze_review_sentiments(text):
@@ -36,9 +39,10 @@ def analyze_review_sentiments(text):
         # Call get method of requests library with URL and parameters
         response = requests.get(request_url)
         return response.json()
+    except requests.RequestException as req_err:
+        print(f"Request exception occurred: {req_err}")
     except Exception as err:
-        print(f"Unexpected {err=}, {type(err)=}")
-        print("Network exception occurred")
+        print(f"Unexpected error: {err}")
 
 
 def post_review(data_dict):
@@ -47,5 +51,7 @@ def post_review(data_dict):
         response = requests.post(request_url, json=data_dict)
         print(response.json())
         return response.json()
-    except:
-        print("Network exception occurred")
+    except requests.RequestException as req_err:
+        print(f"Request exception occurred: {req_err}")
+    except Exception as err:
+        print(f"Unexpected error: {err}")
