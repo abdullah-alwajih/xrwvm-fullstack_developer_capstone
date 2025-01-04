@@ -1,16 +1,15 @@
 # Uncomment the required imports before adding the code
 
-from django.contrib.auth import logout
-from django.contrib import messages
-from datetime import datetime
-
-from django.http import JsonResponse
-from django.contrib.auth import login, authenticate
-import logging
 import json
+import logging
+
+from django.contrib.auth import login, authenticate
+from django.contrib.auth import logout
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .populate import initiate
+
 from .models import CarMake, CarModel
+from .populate import initiate
 from .restapis import get_request, analyze_review_sentiments, post_review
 
 # Get an instance of a logger
@@ -45,8 +44,6 @@ def logout_request(request):
 
 
 # ...
-
-
 def get_cars(request):
     count = CarMake.objects.filter().count()
     print(count)
@@ -55,7 +52,10 @@ def get_cars(request):
     car_models = CarModel.objects.select_related("car_make")
     cars = []
     for car_model in car_models:
-        cars.append({"CarModel": car_model.name, "CarMake": car_model.car_make.name})
+        cars.append({
+            "CarModel": car_model.name,
+            "CarMake": car_model.car_make.name
+        })
     return JsonResponse({"CarModels": cars})
 
 
@@ -103,12 +103,13 @@ def get_dealer_details(request, dealer_id):
 
 # Create a `add_review` view to submit a review
 def add_review(request):
-    if request.user.is_anonymous == False:
+    if not request.user.is_anonymous:
         data = json.loads(request.body)
         try:
             response = post_review(data)
             return JsonResponse({"status": 200})
-        except:
+        except Exception as err:
+            logger.error(f"Error in posting review: {err}")
             return JsonResponse({"status": 401, "message": "Error in posting review"})
     else:
         return JsonResponse({"status": 403, "message": "Unauthorized"})
