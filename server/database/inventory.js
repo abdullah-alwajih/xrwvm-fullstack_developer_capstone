@@ -1,9 +1,9 @@
-const { Int32 } = require("mongodb");
-const mongoose = require("mongoose");
+var mongodb = require("mongodb");
+var mongoose = require("mongoose");
+var Int32 = mongodb.Int32;
+var Schema = mongoose.Schema;
 
-const Schema = mongoose.Schema;
-
-const cars = new Schema({
+var cars = new Schema({
   dealer_id: {
     type: Number,
     required: true,
