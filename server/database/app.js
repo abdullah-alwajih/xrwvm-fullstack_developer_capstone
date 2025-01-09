@@ -20,10 +20,10 @@ mongoose.connect("mongodb://mongo_db:27017/", { dbName: "dealershipsDB" });
 
 
 try {
-  Reviews.devareMany({}).then(function () {
+  Reviews.deleteMany({}).then(function () {
     Reviews.insertMany(reviews_data.reviews);
   });
-  Dealerships.devareMany({}).then(function () {
+  Dealerships.deleteMany({}).then(function () {
     Dealerships.insertMany(dealerships_data.dealerships);
   });
 } catch (error) {
